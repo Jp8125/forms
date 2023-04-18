@@ -1,0 +1,235 @@
+<form [formGroup]="student" class="form-group">
+ 
+  <div class="container p-5 border">
+    <h1 class="text-center bg-dark text-white">Student Details</h1>
+    <div formGroupName="name">
+      <div>
+        <label class="form-lable" for="fname">Firstname:</label>
+        <input class="form-control" type="text" formControlName="fname" />
+        <ng-container *ngIf="name?.get('fname')?.invalid">
+            <small class="text-danger">* Enter first name</small>
+        </ng-container>
+      </div>
+      <div>
+        <label class="form-lable" for="lname">Lastname</label>
+        <input class="form-control" type="text" formControlName="lname" />
+            <small class="text-danger" *ngIf="name?.get('lname')?.invalid">* Enter last name</small>
+      </div>
+      <div>
+        <label class="form-lable" for="mname">Middlename</label>
+        <input class="form-control" type="text" formControlName="mname" />
+            <small class="text-danger" *ngIf="name?.get('mname')?.invalid">* Enter middle name</small>
+      </div>
+    </div>
+    <div>
+      <label class="form-lable" for="dob">Date Of Birth</label>
+      <input class="form-control" type="date" formControlName="dob" />
+  
+        <small class="text-danger" *ngIf="dob?.invalid">* Enter birth Date</small>
+  
+    </div>
+    <div>
+      <label class="form-lable" for="place">Place Of Birth</label>
+      <input class="form-control" type="text" formControlName="place" />
+      <small class="text-danger" *ngIf="student.get('place')?.invalid">* Enter birth place</small>
+    </div>
+    <div>
+      <label class="form-lable" for="first_lang">First Language</label>
+      <input class="form-control" type="text" formControlName="first_lang" />
+      <small class="text-danger" *ngIf="student.get('first_lang')?.invalid">* Enter first language</small>
+    </div>
+    <div formGroupName="address" class="mt-2">
+        <h3 class="bg-dark text-white text-center">Address Details</h3>
+        <div>
+            <label class="form-lable" for="city">City</label>
+            <input class="form-control" type="text" formControlName="city">
+            <small class="text-danger" *ngIf="address?.get('city')?.invalid">* Enter  city</small>
+        </div>
+        <div>
+            <label class="form-lable" for="state">State</label>
+            <input class="form-control" type="text" formControlName="state">
+            <small class="text-danger" *ngIf="address?.get('state')?.invalid">* Enter  State</small>
+        </div>
+        <div>
+            <label class="form-lable" for="country">Country</label>
+            <input class="form-control" type="text" formControlName="country">
+            <small class="text-danger" *ngIf="address?.get('country')?.invalid">* Enter  Country</small>
+        </div>
+        <div>
+            <label class="form-lable" for="pin">Pincode</label>
+            <input class="form-control" type="text" formControlName="pin">
+            <small class="text-danger" *ngIf="pin?.errors?.['minlength'] || pin?.errors?.['maxlength']">* Enter six digit pin</small>
+            <small class="text-danger" *ngIf="pin?.errors?.['required']">six digit pin required</small>
+            <small class="text-danger" *ngIf="pin?.errors?.['pattern']">only number allowed</small>
+        </div>
+    </div>
+    <div formGroupName="fatherDetails" class="mt-2">
+        <h3 class="bg-dark text-white text-center">Father Details</h3>
+        <div formGroupName="fullname">
+            <div>
+              <label class="form-lable" for="fname">Firstname:</label>
+              <input class="form-control" type="text" formControlName="fname" />
+              <small class="text-danger" *ngIf="father_details?.get('fullname')?.get('fname')?.invalid">* Enter First Name</small>
+            </div>
+            <div>
+              <label class="form-lable" for="lname">Lastname</label>
+              <input class="form-control" type="text" formControlName="lname" />
+              <small class="text-danger" *ngIf="father_details?.get('fullname')?.get('lname')?.invalid">* Enter last Name</small>
+            </div>
+            <div>
+              <label class="form-lable" for="mname">Middlename</label>
+              <input class="form-control" type="text" formControlName="mname" />
+              <small class="text-danger" *ngIf="father_details?.get('fullname')?.get('mname')?.invalid">* Enter Middle Name</small>
+            </div>
+          </div>
+          <div>
+            <label class="form-lable" for="email">Email</label>
+            <input class="form-control" type="email" formControlName="email">
+            <small class="text-danger" *ngIf="father_details?.get('email')?.errors?.['email']">* Enter valid email</small>
+            <small class="text-danger" *ngIf="father_details?.get('email')?.errors?.['required']">* Enter  email</small>
+          </div>
+          <div>
+            <label class="form-lable" for="qualification">Qualification</label>
+            <input class="form-control" type="text" formControlName="qualification">
+            <small class="text-danger" *ngIf="father_details?.get('qualification')?.invalid">* Enter qualification</small>
+          </div>
+          <div>
+            <label class="form-lable" for="proffession">Proffession</label>
+            <input class="form-control" type="text" formControlName="proffession">
+            <small class="text-danger" *ngIf="father_details?.get('proffession')?.errors?.['required']">* Enter proffession </small>
+          </div>
+          <div>
+            <label class="form-lable" for="designation">designation</label>
+            <input class="form-control" type="text" formControlName="designation">
+            <small class="text-danger" *ngIf="father_details?.get('designation')?.errors?.['required']">* Enter designation </small>
+          </div>
+          <div>
+            <label class="form-lable" for="phone">Phone</label>
+            <input class="form-control" type="tel" formControlName="phone">
+            <small class="text-danger" *ngIf="father_details?.get('phone')?.errors?.['maxlength'] || 
+            father_details?.get('phone')?.errors?.['minlength']">* Enter ten digit mobile number</small>
+            <small class="text-danger" *ngIf="father_details?.get('phone')?.errors?.['required']">* Enter mobile number</small>
+            <small class="text-danger" *ngIf="father_details?.get('phone')?.errors?.['pattern']">this field accepts only numbers</small>
+          </div>
+    </div>
+    <div formGroupName="motherDetails" class="mt-2">
+        <h3 class="bg-dark text-white text-center">Mother Details</h3>
+        <div formGroupName="fullname">
+            <div>
+              <label class="form-lable" for="fname">Firstname:</label>
+              <input class="form-control" type="text" formControlName="fname" />
+              <small class="text-danger" *ngIf="mother_details?.get('fullname')?.get('fname')?.invalid">* Enter First Name</small>
+            </div>
+            <div>
+              <label class="form-lable" for="lname">Lastname</label>
+              <input class="form-control" type="text" formControlName="lname" />
+              <small class="text-danger" *ngIf="mother_details?.get('fullname')?.get('lname')?.invalid">* Enter last Name</small>
+            </div>
+            <div>
+              <label class="form-lable" for="mname">Middlename</label>
+              <input class="form-control" type="text" formControlName="mname" />
+              <small class="text-danger" *ngIf="mother_details?.get('fullname')?.get('mname')?.invalid">* Enter Middle Name</small>
+            </div>
+          </div>
+          <div>
+            <label class="form-lable" for="email">Email</label>
+            <input class="form-control" type="email" formControlName="email">
+            <small class="text-danger" *ngIf="mother_details?.get('email')?.errors?.['email']">* Enter valid email</small>
+            <small class="text-danger" *ngIf="mother_details?.get('email')?.errors?.['required']">* Enter  email</small>
+          </div>
+          <div>
+            <label class="form-lable" for="qualification">Qualification</label>
+            <input class="form-control" type="text" formControlName="qualification">
+            <small class="text-danger" *ngIf="mother_details?.get('qualification')?.invalid">* Enter qualification</small>
+          </div>
+          <div>
+            <label class="form-lable" for="proffession">Proffession</label>
+            <input class="form-control" type="text" formControlName="proffession">
+            <small class="text-danger" *ngIf="mother_details?.get('proffession')?.errors?.['required']">* Enter proffession </small>
+          </div>
+          <div>
+            <label class="form-lable" for="designation">designation</label>
+            <input class="form-control" type="text" formControlName="designation">
+            <small class="text-danger" *ngIf="mother_details?.get('designation')?.errors?.['required']">* Enter designation </small>
+          </div>
+          <div>
+            <label class="form-lable" for="phone">Phone</label>
+            <input class="form-control" type="tel" formControlName="phone">
+            <small class="text-danger" *ngIf="mother_details?.get('phone')?.errors?.['maxlength'] || 
+            mother_details?.get('phone')?.errors?.['minlength']">* Enter ten digit mobile number</small>
+            <small class="text-danger" *ngIf="mother_details?.get('phone')?.errors?.['required']">* Enter mobile number</small>
+            <small class="text-danger" *ngIf="mother_details?.get('phone')?.errors?.['pattern']">this field accepts only numbers</small>
+          </div>
+    </div>
+    <div>
+        <h3 class="bg-dark text-white text-center">Emergency contect list</h3>
+        <div formArrayName="Emergency_list" *ngFor="let item of list.controls;let i=index">
+            <div [formGroupName]="i">
+                <div>
+                    <label for="relation">Relation</label>
+                    <select class="form-select form-select-lg mb-3"  name="relation"  id="rel" formControlName="relation">
+                        <option  [value]="relation" *ngFor="let relation of relations">{{relation}}</option>
+                    </select>
+                    <small class="text-danger" *ngIf="item?.get('relation')?.errors?.['required']">* select relation </small>
+                </div>
+               <div>
+                <label for="number">Number</label>
+                <input class="form-control" type="tel" formControlName="number">
+                <small class="text-danger" *ngIf="item?.get('number')?.errors?.['maxlength'] || 
+                item?.get('phone')?.errors?.['minlength']">* Enter ten digit mobile number</small>
+                <small class="text-danger" *ngIf="item?.get('number')?.errors?.['required']">* Enter mobile number</small>
+                <small class="text-danger" *ngIf="item?.get('number')?.errors?.['pattern']">this field accepts only numbers</small>
+               </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center"><button class="btn btn-dark mt-2" (click)="addContect()">add</button></div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center"><button class="btn btn-dark mt-2" (click)="addStudent()">Submit</button></div>
+  <p>{{ student.value | json }}</p>
+  <table class="table table-bordered border-primary"> 
+    <thead>
+        <tr>
+            <th colspan="3">Name</th>
+            <th rowspan="2">Dob</th>
+            <th rowspan="2">Birth Place</th>
+            <th rowspan="2">First Language</th>
+            <th colspan="4">Address</th>
+            <th rowspan="2">Emergency Contacts</th>
+        </tr>
+        <tr>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Pin</th>
+           
+           
+        </tr>
+        <tr *ngFor="let student of Students">
+            <td>{{student.name.fname}}</td>
+            <td> {{student.name.mname}}</td>
+            <td> {{student.name.lname}}</td>
+            <td>{{student.dob}}</td>
+            <td>{{student.place}}</td>
+            <td>{{student.first_lang}}</td>
+            <td>{{student.address.city}}</td>
+            <td>{{student.address.state}}</td>
+            <td>{{student.address.country}}</td>
+            <td>{{student.address.pin}}</td>
+            <td>
+                <ng-container *ngFor="let contect of student.contactDetails">
+                    <div>
+                        <p>Relation:{{contect.relation}}</p>
+                        <p>Number:{{contect.number}}</p>
+                    </div>
+                    <hr>
+                </ng-container>
+            </td>
+           
+        </tr>
+    </thead>
+  </table>
+</form>
