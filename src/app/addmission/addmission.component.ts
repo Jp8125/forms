@@ -7,7 +7,7 @@ import { Contact, Student } from './addmission.module';
   styleUrls: ['./addmission.component.css'],
 })
 export class AddmissionComponent {
-  Students:Array<Student>=[]
+  Students: Array<Student> = [];
   relations: Array<string> = [
     'Father',
     'Mother',
@@ -137,21 +137,30 @@ export class AddmissionComponent {
       })
     );
   }
-  removeContect(){
-    this.list.removeAt(1)
+  removeContect() {
+    this.list.removeAt(1);
   }
-  addStudent(){
-    let name=this.name?.value 
-    let dob=this.dob?.value 
-    let place=this.place?.value 
-    let address=this.address?.value 
-    let father_details=this.father_details?.value
-    let mother_details=this.mother_details?.value
-    let contactArr:Array<Contact>=[]
-    this.student.value.Emergency_list.forEach((element:Contact) => {
-      contactArr.push(element)
+  addStudent() {
+    let name = this.name?.value;
+    let dob = this.dob?.value;
+    let place = this.place?.value;
+    let address = this.address?.value;
+    let father_details = this.father_details?.value;
+    let mother_details = this.mother_details?.value;
+    let contactArr: Array<Contact> = [];
+    this.student.value.Emergency_list.forEach((element: Contact) => {
+      contactArr.push(element);
     });
-    this.Students.push({name:name,dob:dob,place:place,address:address,fatherDetails:father_details,motherDetails:mother_details,first_lang:this.student.value.first_lang,contactDetails:contactArr})
-    console.log(this.Students)
+    this.Students.push({
+      name: name,
+      dob: dob,
+      place: place,
+      address: address,
+      fatherDetails: father_details,
+      motherDetails: mother_details,
+      first_lang: this.student.value.first_lang,
+      contactDetails: contactArr,
+    });
+    console.log(this.Students);
   }
 }
