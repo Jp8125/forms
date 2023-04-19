@@ -5,21 +5,27 @@
       <div>
         <label class="form-lable" for="fname">Firstname:</label>
         <input class="form-control" type="text" formControlName="fname" />
-        <ng-container *ngIf="name?.get('fname')?.invalid">
+        <ng-container
+          *ngIf="name?.get('fname')?.invalid && name?.get('fname')?.touched"
+        >
           <small class="text-danger">* Enter first name</small>
         </ng-container>
       </div>
       <div>
         <label class="form-lable" for="lname">Lastname</label>
         <input class="form-control" type="text" formControlName="lname" />
-        <small class="text-danger" *ngIf="name?.get('lname')?.invalid"
+        <small
+          class="text-danger"
+          *ngIf="name?.get('lname')?.invalid && name?.get('lname')?.touched"
           >* Enter last name</small
         >
       </div>
       <div>
         <label class="form-lable" for="mname">Middlename</label>
         <input class="form-control" type="text" formControlName="mname" />
-        <small class="text-danger" *ngIf="name?.get('mname')?.invalid"
+        <small
+          class="text-danger"
+          *ngIf="name?.get('mname')?.invalid && name?.get('mname')?.touched"
           >* Enter middle name</small
         >
       </div>
@@ -28,19 +34,28 @@
       <label class="form-lable" for="dob">Date Of Birth</label>
       <input class="form-control" type="date" formControlName="dob" />
 
-      <small class="text-danger" *ngIf="dob?.invalid">* Enter birth Date</small>
+      <small class="text-danger" *ngIf="dob?.invalid && dob?.touched"
+        >* Enter birth Date</small
+      >
     </div>
     <div>
       <label class="form-lable" for="place">Place Of Birth</label>
       <input class="form-control" type="text" formControlName="place" />
-      <small class="text-danger" *ngIf="student.get('place')?.invalid"
+      <small
+        class="text-danger"
+        *ngIf="student.get('place')?.invalid && student.get('place')?.touched"
         >* Enter birth place</small
       >
     </div>
     <div>
       <label class="form-lable" for="first_lang">First Language</label>
       <input class="form-control" type="text" formControlName="first_lang" />
-      <small class="text-danger" *ngIf="student.get('first_lang')?.invalid"
+      <small
+        class="text-danger"
+        *ngIf="
+          student.get('first_lang')?.invalid &&
+          student.get('first_lang')?.touched
+        "
         >* Enter first language</small
       >
     </div>
@@ -49,21 +64,31 @@
       <div>
         <label class="form-lable" for="city">City</label>
         <input class="form-control" type="text" formControlName="city" />
-        <small class="text-danger" *ngIf="address?.get('city')?.invalid"
+        <small
+          class="text-danger"
+          *ngIf="address?.get('city')?.invalid && address?.get('city')?.touched"
           >* Enter city</small
         >
       </div>
       <div>
         <label class="form-lable" for="state">State</label>
         <input class="form-control" type="text" formControlName="state" />
-        <small class="text-danger" *ngIf="address?.get('state')?.invalid"
+        <small
+          class="text-danger"
+          *ngIf="
+            address?.get('state')?.invalid && address?.get('state')?.touched
+          "
           >* Enter State</small
         >
       </div>
       <div>
         <label class="form-lable" for="country">Country</label>
         <input class="form-control" type="text" formControlName="country" />
-        <small class="text-danger" *ngIf="address?.get('country')?.invalid"
+        <small
+          class="text-danger"
+          *ngIf="
+            address?.get('country')?.invalid && address?.get('country')?.touched
+          "
           >* Enter Country</small
         >
       </div>
@@ -72,10 +97,12 @@
         <input class="form-control" type="text" formControlName="pin" />
         <small
           class="text-danger"
-          *ngIf="pin?.errors?.['minlength'] || pin?.errors?.['maxlength']"
+          *ngIf="(pin?.errors?.['minlength'] || pin?.errors?.['maxlength'])"
           >* Enter six digit pin</small
         >
-        <small class="text-danger" *ngIf="pin?.errors?.['required']"
+        <small
+          class="text-danger"
+          *ngIf="pin?.errors?.['required'] && pin?.touched"
           >six digit pin required</small
         >
         <small class="text-danger" *ngIf="pin?.errors?.['pattern']"
@@ -91,7 +118,10 @@
           <input class="form-control" type="text" formControlName="fname" />
           <small
             class="text-danger"
-            *ngIf="father_details?.get('fullname')?.get('fname')?.invalid"
+            *ngIf="
+              father_details?.get('fullname')?.get('fname')?.invalid &&
+              father_details?.get('fullname')?.get('fname')?.touched
+            "
             >* Enter First Name</small
           >
         </div>
@@ -100,7 +130,10 @@
           <input class="form-control" type="text" formControlName="lname" />
           <small
             class="text-danger"
-            *ngIf="father_details?.get('fullname')?.get('lname')?.invalid"
+            *ngIf="
+              father_details?.get('fullname')?.get('lname')?.invalid &&
+              father_details?.get('fullname')?.get('lname')?.touched
+            "
             >* Enter last Name</small
           >
         </div>
@@ -109,7 +142,10 @@
           <input class="form-control" type="text" formControlName="mname" />
           <small
             class="text-danger"
-            *ngIf="father_details?.get('fullname')?.get('mname')?.invalid"
+            *ngIf="
+              father_details?.get('fullname')?.get('mname')?.invalid &&
+              father_details?.get('fullname')?.get('mname')?.touched
+            "
             >* Enter Middle Name</small
           >
         </div>
@@ -119,12 +155,12 @@
         <input class="form-control" type="email" formControlName="email" />
         <small
           class="text-danger"
-          *ngIf="father_details?.get('email')?.errors?.['email']"
+          *ngIf="father_details?.get('email')?.errors?.['email'] && father_details?.get('email')?.touched"
           >* Enter valid email</small
         >
         <small
           class="text-danger"
-          *ngIf="father_details?.get('email')?.errors?.['required']"
+          *ngIf="father_details?.get('email')?.errors?.['required'] && father_details?.get('email')?.touched"
           >* Enter email</small
         >
       </div>
@@ -137,7 +173,10 @@
         />
         <small
           class="text-danger"
-          *ngIf="father_details?.get('qualification')?.invalid"
+          *ngIf="
+            father_details?.get('qualification')?.invalid &&
+            father_details?.get('qualification')?.touched
+          "
           >* Enter qualification</small
         >
       </div>
@@ -146,7 +185,7 @@
         <input class="form-control" type="text" formControlName="proffession" />
         <small
           class="text-danger"
-          *ngIf="father_details?.get('proffession')?.errors?.['required']"
+          *ngIf="father_details?.get('proffession')?.errors?.['required'] && father_details?.get('proffession')?.touched"
           >* Enter proffession
         </small>
       </div>
@@ -155,7 +194,7 @@
         <input class="form-control" type="text" formControlName="designation" />
         <small
           class="text-danger"
-          *ngIf="father_details?.get('designation')?.errors?.['required']"
+          *ngIf="father_details?.get('designation')?.errors?.['required'] && father_details?.get('designation')?.touched"
           >* Enter designation
         </small>
       </div>
@@ -164,13 +203,13 @@
         <input class="form-control" type="tel" formControlName="phone" />
         <small
           class="text-danger"
-          *ngIf="father_details?.get('phone')?.errors?.['maxlength'] || 
-            father_details?.get('phone')?.errors?.['minlength']"
+          *ngIf="(father_details?.get('phone')?.errors?.['maxlength'] || 
+            father_details?.get('phone')?.errors?.['minlength']) && father_details?.get('phone')?.touched"
           >* Enter ten digit mobile number</small
         >
         <small
           class="text-danger"
-          *ngIf="father_details?.get('phone')?.errors?.['required']"
+          *ngIf="father_details?.get('phone')?.errors?.['required'] &&  father_details?.get('phone')?.touched"
           >* Enter mobile number</small
         >
         <small
@@ -188,7 +227,10 @@
           <input class="form-control" type="text" formControlName="fname" />
           <small
             class="text-danger"
-            *ngIf="mother_details?.get('fullname')?.get('fname')?.invalid"
+            *ngIf="
+              mother_details?.get('fullname')?.get('fname')?.invalid &&
+              mother_details?.get('fullname')?.get('fname')?.touched
+            "
             >* Enter First Name</small
           >
         </div>
@@ -197,7 +239,10 @@
           <input class="form-control" type="text" formControlName="lname" />
           <small
             class="text-danger"
-            *ngIf="mother_details?.get('fullname')?.get('lname')?.invalid"
+            *ngIf="
+              mother_details?.get('fullname')?.get('lname')?.invalid &&
+              mother_details?.get('fullname')?.get('lname')?.touched
+            "
             >* Enter last Name</small
           >
         </div>
@@ -206,7 +251,10 @@
           <input class="form-control" type="text" formControlName="mname" />
           <small
             class="text-danger"
-            *ngIf="mother_details?.get('fullname')?.get('mname')?.invalid"
+            *ngIf="
+              mother_details?.get('fullname')?.get('mname')?.invalid &&
+              mother_details?.get('fullname')?.get('mname')?.touched
+            "
             >* Enter Middle Name</small
           >
         </div>
@@ -216,12 +264,12 @@
         <input class="form-control" type="email" formControlName="email" />
         <small
           class="text-danger"
-          *ngIf="mother_details?.get('email')?.errors?.['email']"
+          *ngIf="mother_details?.get('email')?.errors?.['email'] && mother_details?.get('email')?.touched"
           >* Enter valid email</small
         >
         <small
           class="text-danger"
-          *ngIf="mother_details?.get('email')?.errors?.['required']"
+          *ngIf="mother_details?.get('email')?.errors?.['required'] && mother_details?.get('email')?.touched"
           >* Enter email</small
         >
       </div>
@@ -234,7 +282,10 @@
         />
         <small
           class="text-danger"
-          *ngIf="mother_details?.get('qualification')?.invalid"
+          *ngIf="
+            mother_details?.get('qualification')?.invalid &&
+            mother_details?.get('qualification')?.touched
+          "
           >* Enter qualification</small
         >
       </div>
@@ -243,7 +294,7 @@
         <input class="form-control" type="text" formControlName="proffession" />
         <small
           class="text-danger"
-          *ngIf="mother_details?.get('proffession')?.errors?.['required']"
+          *ngIf="mother_details?.get('proffession')?.errors?.['required'] && mother_details?.get('proffession')?.touched"
           >* Enter proffession
         </small>
       </div>
@@ -252,7 +303,7 @@
         <input class="form-control" type="text" formControlName="designation" />
         <small
           class="text-danger"
-          *ngIf="mother_details?.get('designation')?.errors?.['required']"
+          *ngIf="mother_details?.get('designation')?.errors?.['required'] && mother_details?.get('designation')?.touched"
           >* Enter designation
         </small>
       </div>
@@ -261,13 +312,13 @@
         <input class="form-control" type="tel" formControlName="phone" />
         <small
           class="text-danger"
-          *ngIf="mother_details?.get('phone')?.errors?.['maxlength'] || 
-            mother_details?.get('phone')?.errors?.['minlength']"
+          *ngIf="(mother_details?.get('phone')?.errors?.['maxlength'] || 
+            mother_details?.get('phone')?.errors?.['minlength']) && mother_details?.get('phone')?.touched"
           >* Enter ten digit mobile number</small
         >
         <small
           class="text-danger"
-          *ngIf="mother_details?.get('phone')?.errors?.['required']"
+          *ngIf="mother_details?.get('phone')?.errors?.['required'] &&  mother_details?.get('phone')?.touched"
           >* Enter mobile number</small
         >
         <small
@@ -277,6 +328,7 @@
         >
       </div>
     </div>
+
     <div>
       <h3 class="bg-dark text-white text-center">Emergency contect list</h3>
       <div
@@ -298,7 +350,7 @@
             </select>
             <small
               class="text-danger"
-              *ngIf="item?.get('relation')?.errors?.['required']"
+              *ngIf="item?.get('relation')?.errors?.['required'] && item?.get('relation')?.touched"
               >* select relation
             </small>
           </div>
@@ -308,18 +360,18 @@
             <small
               class="text-danger"
               *ngIf="item?.get('number')?.errors?.['maxlength'] || 
-                item?.get('phone')?.errors?.['minlength']"
+                item?.get('phone')?.errors?.['minlength'] "
               >* Enter ten digit mobile number</small
             >
             <small
               class="text-danger"
-              *ngIf="item?.get('number')?.errors?.['required']"
+              *ngIf="item?.get('number')?.errors?.['required'] && item?.get('number')?.touched"
               >* Enter mobile number</small
             >
             <small
               class="text-danger"
               *ngIf="item?.get('number')?.errors?.['pattern']"
-              >this field accepts only numbers</small
+              >*this field accepts only numbers</small
             >
           </div>
         </div>
@@ -341,7 +393,6 @@
       Submit
     </button>
   </div>
-
 </form>
 <div class="container mt-2">
   <table class="table table-bordered border-primary text-center">
