@@ -18,8 +18,8 @@ export class AddmissionComponent {
   ];
   student: FormGroup;
   constructor(private form: FormBuilder) {
-    this.student = this.form.group({
-      name: this.form.group({
+    this.student = form.group({
+      name: form.group({
         fname: ['', Validators.required],
         lname: ['', Validators.required],
         mname: ['', Validators.required],
@@ -27,7 +27,7 @@ export class AddmissionComponent {
       dob: ['', Validators.required],
       place: ['', Validators.required],
       first_lang: ['', Validators.required],
-      address: this.form.group({
+      address: form.group({
         city: ['', Validators.required],
         state: ['', Validators.required],
         country: ['', Validators.required],
@@ -41,8 +41,8 @@ export class AddmissionComponent {
           ],
         ],
       }),
-      fatherDetails: this.form.group({
-        fullname: this.form.group({
+      fatherDetails: form.group({
+        fullname: form.group({
           fname: ['', Validators.required],
           lname: ['', Validators.required],
           mname: ['', Validators.required],
@@ -61,8 +61,8 @@ export class AddmissionComponent {
           ],
         ],
       }),
-      motherDetails: this.form.group({
-        fullname: this.form.group({
+      motherDetails: form.group({
+        fullname: form.group({
           fname: ['', Validators.required],
           lname: ['', Validators.required],
           mname: ['', Validators.required],
@@ -81,8 +81,8 @@ export class AddmissionComponent {
           ],
         ],
       }),
-      Emergency_list: this.form.array([
-        this.form.group({
+      Emergency_list: form.array([
+        form.group({
           relation: ['', Validators.required],
           number: [
             '',
