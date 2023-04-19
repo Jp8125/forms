@@ -137,6 +137,9 @@ export class AddmissionComponent {
       })
     );
   }
+  removeContect(){
+    this.list.removeAt(1)
+  }
   addStudent(){
     let name=this.name?.value 
     let dob=this.dob?.value 
